@@ -1,0 +1,32 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsfot/vscode-dev-containers/tree/v0.140.1/containers/ruby
+{
+    "name": "Ruby",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "args": {
+            // Update to pick a Ruby version: 2, 2.7, 2.6, 2.5
+            "RUBY_VERSION": "2.7"
+        }
+    },
+    // Set *defaults* container specific settings.json values on container create.
+    "settings": {
+        "terminal.integrated.shell.linux": "/usr/bin/fish",
+        // "terminal.integrated.shell.linux": "/bin/bash",
+        "files.insertFinalNewline": true,
+        "files.trimFinalNewlines": false
+    },
+    // Add the IDs of extensions you want installed when the container is closed.
+    "extensions":[
+        "rebornix.Ruby",
+        "castwide.solargraph",
+        "kaiwood.endwise"
+    ],
+    // Use 'userEnvProbe' to indicate the type of shell VS Code should use to "probe" for user environment variables to use by default while debugging or running a task.
+    // LoginInteractiveShell is used so that /etc/profile is sourced when we open a terminal, which will run the rvm commands we appended.
+    "userEnvProbe": "loginInteractiveShell",
+    // Since $HOME is set to /root (and we don't want to change that), add an alias to easily navigate to where our folder is.
+    // Example: >_ home -> cd /workspaces/vscode-dev-containers/ruby
+    // "postCreateCommand": "echo \"alias home='cd ${containerWorkspaceFolder}'\" >> /etc/bash.bashrc",
+    "postAttachCommand": "mkdir -p ~/.config/fish && echo \"alias home='cd ${containerWorkspaceFolder}'\" >> ~/.config/fish/config.fish"
+}
