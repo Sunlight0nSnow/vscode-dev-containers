@@ -1,0 +1,19 @@
+{
+    "name": "VS Code Devcontainer",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "args": {
+            "GOLANG_VERSION": "1.15.7"
+        }
+    },
+    "settings": {
+        "terminal.integrated.shell.linux": "/usr/bin/fish",
+        "files.insertFinalNewline": true,
+        "files.trimFinalNewlines": false
+    },
+    "extensions": [
+		"golang.go",
+	],
+    "userEnvProbe": "loginInteractiveShell",
+    "postAttachCommand": "mkdir -p ~/.config/fish && echo \"alias home='cd ${containerWorkspaceFolder}'\" >> ~/.config/fish/config.fish"
+}
