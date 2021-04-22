@@ -1,0 +1,28 @@
+{
+    "name": "nim-devcontainer",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "args": {
+            "NIM_VERSION": "1.4.6"
+        }
+    },
+
+    "runArgs": [
+        "--cap-add=SYS_PTRACE",
+        "--security-opt",
+        "seccomp=unconfined"
+    ],
+
+    "settings": {
+        "terminal.integrated.shell.linux": "/usr/bin/fish",
+        "files.insertFinalNewline": true,
+        "files.trimFinalNewlines": false
+    },
+
+    "extensions": [
+		"kosz78.nim"
+	],
+
+    "userEnvProbe": "loginInteractiveShell",
+    "postAttachCommand": "mkdir -p ~/.config/fish && echo \"alias home='cd ${containerWorkspaceFolder}'\" >> ~/.config/fish/config.fish",
+}
